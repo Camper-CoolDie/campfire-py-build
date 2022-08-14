@@ -1,0 +1,2 @@
+rootProject.name = 'CampfirePython'
+include('CampfirePython', 'DevSupJava', 'CampfireApi')

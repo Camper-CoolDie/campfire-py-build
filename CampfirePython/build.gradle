@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.21'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation 'org.reflections:reflections:0.10.2'
+    implementation 'ch.qos.logback:logback-parent:1.2.9'
+    implementation project(':DevSupJava')
+    implementation project(':CampfireApi')
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.campfire.python.Main'
+    }
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
